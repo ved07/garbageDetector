@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+<meta charset=utf-8 /> -->
+
+<body style ="background:green" >
+<section class="jumbotron text-center"  style="background-image: url('https://singularityhub.com/wp-content/uploads/2019/07/Green-silhouette-forest-abstract-background-environment-shutterstock-692341585.jpg'); background-size: 100%;">
+    <div class="jumbotron text-center" style="background: rgba(204, 204, 204, 0.7);">
+        <h1 class="display-2">Recycle and save the environment!</h1>
+        <h4> Welcome to Recycle.AI, a waste-sorting software that uses innovative technologies to tackle growing global issues. <br>Upload an image to try it out for yourself!
+        </h4>
+         
+    </div>
+  <form action="http://sethacksdemo.ved07.repl.co/" method="POST" enctype = "multipart/form-data" class="btn btn-success" >
+    <label for="image">Select Image:</label>
+    <input type='file' id="img" name="file" accept="image/*" onchange="readURL(this);" />
+    <img id="blah" src="#" alt="your image" />
+    <input type ="submit" value="submit"/>
+    
+    <!-- <form target="/uploadfiles.php" method="post" enctype="multipart/form-data">
+		Content will go inside here.
+	 <input name="file1" type="file">
+		<input type="submit" value="Upload Now">
+	</form> -->
+
+<!-- <form action="php/uploadfiles.php" method="post" enctype="multipart/form-data">
+<p>
+<label for="my_upload">Select the file to upload:</label>
+<input id="my_upload" name="my_upload" type="file">
+</p>
+<input type="submit" value="Upload Now">
+</form> -->
+
+  <!-- <form action="/action_page.php">
+  <input type="file" id="img" name="img" accept="image/*">
+  <input type="submit">
+</form> -->
+
+    
+    <section class="jumbotron text-center"  style="background-image: url('https://cdnb.artstation.com/p/assets/images/images/021/356/959/large/henrique-xavier-cartoon-forest.jpg?1571346609'); background-size: 100%;">    <div class = 'container' style="padding-top: 25px">   
+      <div class="jumbotron text-center" style="background: rgba(204, 204, 204, 0.7);">        <h1 class="display-4">Only 1 out of every 5 plastic bottles actually gets recycled</h1>
+      <h4>
+              This application not only helps with finding recylable items but can also be used in automation to detect garbage and recylables in areas where people may be illegally litering and throwing out garbage onto the street or the environment.
+      </h4>
+    </div>
+  </div>
+     
+</section>
+
+<section class="jumbotron text-center"  style="background-image: url('https://img.freepik.com/free-vector/ocean-sea-beach-nature-tranquil-landscape_33099-2248.jpg?size=626&ext=jpg'); background-size: 100%;">    <div class = 'container' style="padding-top: 25px">   
+      <div class="jumbotron text-center" style="background: rgba(204, 204, 204, 0.7);">        <h1 class="display-4">Recycle AI provides the resources to properly filter out recyclables from a given environment</h1>
+      <h4>
+              Certain countries do not have the manpower to filter and organize resources for reuse. Through our revolutionary process, we are able to identify recylable items through automation and therefore organize thousands of items into their appropriate categories within minutes. Images for filtering can be taken from a high definition camera or even a mobile smartphone for on-the-go feedback.
+     </h4>
+        
+    </div>
+  </div>
+     
+</section>
+
+</div>
+</body>
+<footer >
+  <div class = "jumbotron text-center" style="position: absolute; width: 100%; height: 2.5rem; background-color: rgb(20,150,85)" >
+    <a style= " color: pink;" href="mailto:recycle.AI@gmail.com" target="_blank" rel="nofollow">Email Us</a>
+    <p style="color:white;">Tel: 1-800-362-3746</p>
+  </div>
+</footer>
+{% endblock %}
