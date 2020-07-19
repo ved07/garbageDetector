@@ -5,7 +5,7 @@ from tensorflow.keras.callbacks import ModelCheckpoint
 import matplotlib.pyplot as plt
 import os
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageOps
 from numpy import asarray
 class model():
     def __init__(self):
@@ -29,6 +29,7 @@ class model():
     def setupData(self):
         trainingImages = []
         trainingLabels = []
+
         for directory in os.walk('Garbage classification'):
             directory = list(directory)
             print(directory[1])
@@ -93,7 +94,20 @@ class model():
             inputData = Image.open('test/'+testfile)
         else:
             inputData = Image.open(testfile)
-        inputData = inputData.resize((512, 384), Image.ANTIALIAS)
+        desiredSize = (512,384)
+        im = inputData
+        old_size = im.size
+
+        ratio = float(max(desiredSize)) / max(old_size)
+        new_size = tuple([int(x * ratio) for x in old_size])
+        delta_w = desiredSize[0] - new_size[0]
+        delta_h = desiredSize[1] - new_size[1]
+        padding = (delta_w // 2, delta_h // 2, delta_w - (delta_w // 2), delta_h - (delta_h // 2))
+        new_im = ImageOps.expand(im, padding)
+        im = new_im.resize(desiredSize, Image.ANTIALIAS)
+        im.show()
+        inputData=im
+
         inputData = asarray(inputData).reshape([1, 384, 512, 3])
         self.pred = self.model.predict(inputData)[0]
         return self.pred
