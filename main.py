@@ -7,14 +7,30 @@ app = Flask(__name__,template_folder='templates')
 def index():
   if request.method == "POST":
     image=request.files["file"]
-    image.filename = "main" + ".jpg"
+    image.filename = "poop" + ".jpg"
     filepath = image.filename
     print(filepath)
     image.save(filepath)
-    
-    return redirect(url_for("test",poop=image))
-  else:
-   return render_template("home.html")
+
+    """
+    # Instantiate a new Clarifai app by passing in your API key.
+    app = ClarifaiApp(api_key='dad6ee7ee71e4a98a2c747bc25fd69a4')
+    model = app.public_models.general_model
+    model.model_version = 'aa7f35c01e0642fda5cf400f543e7c40'
+    response = model.predict_by_filename(".jpg")
+    print(response["outputs"][0]["data"]["concepts"])
+    poop = response["outputs"][0]["data"]["concepts"]
+
+    recyclable = False
+    for element in poop:
+        if (element["name"] == "recycling") and (element["value"]>=0.75):
+            recyclable = True
+    if recyclable:
+        print("yep, its a recyclable")
+    else:
+        print("nope, into the trash")
+    """
+  return render_template("home.html")
 
 
 @app.route('/mission/')
@@ -27,19 +43,11 @@ def progUses():
 @app.route("/<poop>")
 def test(poop):
     return f"<p>{poop}</p>"
-@app.route('/predict/')
-def predict():
-  from convNet import model as conv
-  Net = conv()
-  Net.oneHotEncode()
-  Net.setupData()
-  Net.setupModel()
-  print(Net.predict('main.jpg'))
-  print(Net.decodeOneHot())
-  
-  
+
 if __name__ == "__main__": 
   # Makes sure this is the main process
-	app.run(debug=True)
+	app.run(debug=True, # Starts the site
+		host='0.0.0.0',  # EStablishes the host, required for repl to detect the site
+		port=random.randint(2000, 9000))
     #port = 5000  # Randomly select the port the machine hosts on. 
   
